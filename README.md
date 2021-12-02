@@ -2,7 +2,7 @@
 ![Teaser](teaser.png)
 
 ## Update
-In [Sparse Needlets for Lighting Estimation with Spherical Transport Loss (ICCV 2021)](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhan_Sparse_Needlets_for_Lighting_Estimation_With_Spherical_Transport_Loss_ICCV_2021_paper.pdf), We introduce a Needlets basis for lighting representation which allows to represent illumination in both spatial and frequency domain. The code is available in NeedleLets of this repository.
+Our new work [Sparse Needlets for Lighting Estimation with Spherical Transport Loss](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhan_Sparse_Needlets_for_Lighting_Estimation_With_Spherical_Transport_Loss_ICCV_2021_paper.pdf) is accepted to ICCV 2021. This work introduces a new Needlets basis for lighting representation which allows to represent illumination in both spatial and frequency domain. The code is available in NeedleLets of this repository.
 
 ## Prerequisites
 - Linux or macOS
