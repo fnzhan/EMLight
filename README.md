@@ -1,8 +1,9 @@
 # EMLight: Lighting Estimation via Spherical Distribution Approximation (AAAI 2021)
-![Teaser](teaser.png)
+![Teaser](teaser1.png)
 
 ## Update
 Our new work [Sparse Needlets for Lighting Estimation with Spherical Transport Loss](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhan_Sparse_Needlets_for_Lighting_Estimation_With_Spherical_Transport_Loss_ICCV_2021_paper.pdf) is accepted to ICCV 2021. This work introduces a new Needlets basis for lighting representation which allows to represent illumination in both spatial and frequency domains. The implementation code is available in `Needlets/` of this repository.
+![Teaser](teaser2.png)
 
 ## Prerequisites
 - Linux or macOS
