@@ -34,6 +34,9 @@ python3 train.py
 ````
 Training tip: you may overfit the model on a small subset first, then train the model on the full set, to avoid divergence during training.
 
+## 3D Scenes for Object Insertion & Rendering
+To evaluate the performance of lighting estimation, we create an evaluation set with 25 scenes to conduct 3D object insertion & rendering (in Blender).
+This evaluation dataset can be downloaded from [Google Drive](https://drive.google.com/file/d/1wSSfTd08Us8ccn5H88X6MyeEhlDfiONH/view?usp=sharing).
 
 ### Citation
 If you use this code for your research, please cite our papers.
