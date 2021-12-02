@@ -37,6 +37,7 @@ Training tip: you may overfit the model on a small subset first, then train the 
 ## 3D Object Insertion & Rendering
 To evaluate the performance of lighting estimation, we create an evaluation set with 25 scenes to conduct 3D object insertion & rendering (in Blender).
 This evaluation dataset can be downloaded from [Google Drive](https://drive.google.com/file/d/1wSSfTd08Us8ccn5H88X6MyeEhlDfiONH/view?usp=sharing).
+
 ![Teaser](teaser3.png)
 
 
