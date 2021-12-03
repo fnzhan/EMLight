@@ -2,11 +2,10 @@
 ![Teaser](teaser1.png)
 
 ## Update
+- *12/2021*: We release our [Virtual Object Relighting (VOR) dataset](https://drive.google.com/drive/folders/1mI3ufHgZOmHeShoezk77Gr_GhdqCPGif?usp=sharing) for lighting estimation evaluation. Please refer to Virtual Object Insertion & Rendering section.
 - *07/2021*: Our new work [Sparse Needlets for Lighting Estimation with Spherical Transport Loss](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhan_Sparse_Needlets_for_Lighting_Estimation_With_Spherical_Transport_Loss_ICCV_2021_paper.pdf) is accepted to ICCV 2021. This work introduces a new Needlets basis for lighting representation which allows to represent illumination in both spatial and frequency domains. The implementation code is available in `Needlets/` of this repository.
 
 ![Teaser](teaser2.png)
-
-- *12/2021*: We release our [Virtual Object Relighting (VOR) dataset](https://drive.google.com/drive/folders/1mI3ufHgZOmHeShoezk77Gr_GhdqCPGif?usp=sharing) for lighting estimation evaluation. Please refer to Virtual Object Insertion & Rendering section.
 
 
 ## Prerequisites
