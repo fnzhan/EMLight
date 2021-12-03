@@ -33,9 +33,9 @@ Then run the command
 cd RegressionNetwork/
 python3 train.py
 ````
-Training tip: you may overfit the model on a small subset first, then train the model on the full set, to avoid divergence during training. 
+Training tip1: you may overfit the model on a small subset first, then train the model on the full set, to avoid divergence during training. 
 
-Besides, you can try to reduce the number of anchor points (e.g., 96) in the model, which helps to converge during training.
+Training tip2: you can try to reduce the number of anchor points (e.g., 96) in the model, which helps to converge during training.
 
 ## Virtual Object Insertion & Rendering
 To evaluate the performance of lighting estimation, we create an Virtual Object Relighting (VOR) dataset to conduct object insertion & rendering in Blender.
