@@ -36,6 +36,7 @@ Training tip: you may overfit the model on a small subset first, then train the 
 
 ## 3D Object Insertion & Rendering
 To evaluate the performance of lighting estimation, we create an evaluation set consisting of 3D scenes to conduct object insertion & rendering (in Blender).
+The lighting estimaiton performance is evaluated by using the predicted illumination map as the environment light in Blender
 The background scenes of this set include images from [Laval Indoor HDR](http://indoor.hdrdb.com/), [Fast Spatially-Varying Indoor](https://lvsn.github.io/fastindoorlight/supplementary/index.html#), and some wild scenes.
 This evaluation dataset can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1mI3ufHgZOmHeShoezk77Gr_GhdqCPGif?usp=sharing).
 
