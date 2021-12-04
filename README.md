@@ -38,7 +38,7 @@ Training tip1: you may overfit the model on a small subset first, then train the
 Training tip2: you can try to reduce the number of anchor points (e.g., 96) in the model, which helps to converge during training.
 
 ## Virtual Object Insertion & Rendering
-To evaluate the performance of lighting estimation, we create an Virtual Object Relighting (VOR) dataset to conduct object insertion & rendering in Blender.
+To evaluate the performance of lighting estimation, we create a Virtual Object Relighting (VOR) dataset to conduct object insertion & rendering in Blender.
 The lighting estimaiton performance is evaluated by using the predicted illumination map as the environment light in Blender.
 
 The background scenes of this set include images from [Laval Indoor HDR](http://indoor.hdrdb.com/), [Fast Spatially-Varying Indoor](https://lvsn.github.io/fastindoorlight/supplementary/index.html#), and some wild scenes.
