@@ -42,7 +42,7 @@ To evaluate the performance of lighting estimation, we create a Virtual Object R
 The lighting estimaiton performance is evaluated by using the predicted illumination map as the environment light in Blender.
 
 The background scenes of this set include images from [Laval Indoor HDR](http://indoor.hdrdb.com/), [Fast Spatially-Varying Indoor](https://lvsn.github.io/fastindoorlight/supplementary/index.html#), and some wild scenes.
-This evaluation dataset can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1mI3ufHgZOmHeShoezk77Gr_GhdqCPGif?usp=sharing).
+This dataset can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1mI3ufHgZOmHeShoezk77Gr_GhdqCPGif?usp=sharing).
 
 ![Teaser](teaser3.png)
 
