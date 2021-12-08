@@ -56,10 +56,9 @@ for i, para in enumerate(dataloader):
 
     print (intensity_pred, intensity_gt)
 
-    # save images
-#     dirs = util.polyhedron(1)
-#     dirs = torch.from_numpy(dirs).float()
-#     dirs = dirs.view(1, ln*3).cuda()
+    dirs = util.sphere_points(ln)
+    dirs = torch.from_numpy(dirs).float()
+    dirs = dirs.view(1, ln * 3).cuda()
 
     size = torch.ones((1, ln)).cuda() * 0.0025
     # print (rgb_ratio_gt[:1].shape)
