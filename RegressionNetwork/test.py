@@ -38,7 +38,7 @@ tone = util.TonemapHDR(gamma=2.4, percentile=99, max_mapping=0.9)
 for i, para in enumerate(dataloader):
     if i >= 100:
         break
-    ln = 42
+    ln = 96
 
     nm = para['name'][0]
 
@@ -57,9 +57,9 @@ for i, para in enumerate(dataloader):
     print (intensity_pred, intensity_gt)
 
     # save images
-    dirs = util.polyhedron(1)
-    dirs = torch.from_numpy(dirs).float()
-    dirs = dirs.view(1, ln*3).cuda()
+#     dirs = util.polyhedron(1)
+#     dirs = torch.from_numpy(dirs).float()
+#     dirs = dirs.view(1, ln*3).cuda()
 
     size = torch.ones((1, ln)).cuda() * 0.0025
     # print (rgb_ratio_gt[:1].shape)
