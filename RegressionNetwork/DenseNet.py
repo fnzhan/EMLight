@@ -139,10 +139,10 @@ class DenseNet(nn.Module):
         out = self.fc(out)
 
         dist_pred = self.fc_dist(out)
-        dist_pred = self.sigmoid(dist_pred)
+#         dist_pred = self.sigmoid(dist_pred)
         intenstiy_pred = self.fc_intensity(out)
         rgb_ratio_pred = self.fc_rgb_ratio(out)
-        rgb_ratio_pred = self.sigmoid(rgb_ratio_pred)
+#         rgb_ratio_pred = self.sigmoid(rgb_ratio_pred)
         ambient_pred = self.fc_ambient(out)
         depth_pred = self.fc_depth(out)
 
