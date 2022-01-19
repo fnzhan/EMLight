@@ -11,24 +11,29 @@ from util import PanoramaHandler, TonemapHDR, tonemapping
 from PIL import Image
 import util
 import DenseNet
-from gmloss import SamplesLoss
+from geomloss import SamplesLoss
+# from sliced_wasserstein import sliced_wasserstein_distance
 
 import imageio
 imageio.plugins.freeimage.download()
 
 # os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 h = PanoramaHandler()
-batch_size = 64
+batch_size = 16
 
 save_dir = "./checkpoints"
-train_dir = '/home/fangneng.zfn/datasets/LavalIndoor/train/'
+train_dir = '/opt/tiger/fnzhan/datasets/LavalIndoor/'
+# train_dir = '/home/fangneng.zfn/projects/Alibaba/MeshLight/dataset/'
 hdr_train_dataset = data.ParameterDataset(train_dir)
 dataloader = DataLoader(hdr_train_dataset, batch_size=batch_size, shuffle=True, drop_last=True)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# Model = model.densenet121(pretrained=False, output_type='regress').to(device)
 Model = DenseNet.DenseNet().to(device)
-Model = nn.DataParallel(Model, device_ids=[0, 1])# multi-GPU
+# Model = nn.DataParallel(Model, device_ids=[0, 1])# multi-GPU
 
+torch.set_grad_enabled(True)
+Model.train()
 
 load_weight = True
 if load_weight:
@@ -36,19 +41,17 @@ if load_weight:
     print('load trained model')
 util.print_model_parm_nums(Model)
 
-lr_base = 0.001
+lr_base = 0.0005
 betas = (0.9, 0.999)
 optimizer = torch.optim.Adam(Model.parameters(), lr=lr_base, betas=betas)
-lr_decay_iters = 100
-scheduler = lr_scheduler.StepLR(optimizer, step_size=lr_decay_iters, gamma=0.5)
+lr_decay_iters = 1000
+# scheduler = lr_scheduler.StepLR(optimizer, step_size=lr_decay_iters, gamma=0.5)
 l2 = nn.MSELoss().to(device)
-# L2_Loss = nn.MSELoss()
-GMLoss = SamplesLoss("sinkhorn", p=2, blur=.025, batchsize=batch_size)
-UGMLoss = SamplesLoss("sinkhorn", p=2, blur=.025, batchsize=batch_size, reach=0.5)
+Sam_Loss = SamplesLoss("sinkhorn", p=2, blur=.025, batchsize=batch_size)
 
 tone = util.TonemapHDR(gamma=2.4, percentile=99, max_mapping=0.99)
 
-ln = 128
+ln = 96
 
 coord = util.sphere_points(ln)
 coord = torch.from_numpy(coord).unsqueeze(0)
@@ -57,9 +60,6 @@ coord = coord.repeat(batch_size, 1, 1).to(device).float()
 
 
 for epoch in range(0, 10000):
-
-    torch.set_grad_enabled(True)
-    Model.train()
 
     print('{} optim: {}'.format(epoch, optimizer.param_groups[0]['lr']))
 
@@ -74,25 +74,23 @@ for epoch in range(0, 10000):
         intensity_pred, intensity_gt = pred['intensity'], para['intensity'].to(device)
         rgb_ratio_pred, rgb_ratio_gt = pred['rgb_ratio'], para['rgb_ratio'].to(device)
         ambient_pred, ambient_gt = pred['ambient'], para['ambient'].to(device)
-        depth_pred, depth_gt = pred['depth'], para['depth'].to(device)
 
 
         dist_pred = dist_pred.view(-1, ln, 1)
         dist_gt = dist_gt.view(-1, ln, 1)
-        dist_emloss = GMLoss(dist_pred, dist_gt, depth_gt).sum() * 1000.0
+        dist_emloss = Sam_Loss(dist_pred, dist_gt).sum() * 1000.0
         dist_l2loss = l2(dist_pred, dist_gt) * 1000.0
         intensity_loss = l2(intensity_pred, intensity_gt) * 0.1
         rgb_loss = l2(rgb_ratio_pred, rgb_ratio_gt) * 100.0
         ambient_loss = l2(ambient_pred, ambient_gt) * 1.0
-        depth_loss = UGMLoss(depth_pred, depth_gt, depth_gt) * 1.0
 
-        loss = dist_emloss + dist_l2loss + intensity_loss + rgb_loss + ambient_loss + depth_loss
+        loss = dist_emloss + dist_l2loss + intensity_loss + rgb_loss + ambient_loss
 
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
 
-        scheduler.step()
+        # scheduler.step()
 
         if i % 10 == 0:
             print("epoch {:0>3d} batch {:0>3d}, dist_emloss:{}, dist_l2loss:{}, intensity_loss:{}, rgb_loss:{}, ambient_loss:{}"
