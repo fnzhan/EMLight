@@ -120,17 +120,17 @@ class DenseNet(nn.Module):
 
             # Final batch norm
             self.features.add_module('last_norm%d' % (i+1), nn.BatchNorm2d(num_features))
-            # Linear layer
-            self.fc = nn.Linear(8208, 1024)
-            self.fc_dist = nn.Linear(1024, 128)  # 12,12,32
-            self.fc_intensity = nn.Linear(1024, 1)
-            self.fc_rgb_ratio = nn.Linear(1024, 3)
-            self.fc_ambient = nn.Linear(1024, 3)
-            self.fc_depth = nn.Linear(1024, 128)
-            self.sigmoid = nn.Sigmoid()
-            self.tanh = nn.Tanh()
-            self.softmax = nn.Softmax(dim=1)
-            self.relu = nn.ReLU()
+
+        # Linear layer
+        self.fc = nn.Linear(8208, 1024)
+        self.fc_dist = nn.Linear(1024, 96)  # 12,12,32
+        self.fc_intensity = nn.Linear(1024, 1)
+        self.fc_rgb_ratio = nn.Linear(1024, 3)
+        self.fc_ambient = nn.Linear(1024, 3)
+        self.sigmoid = nn.Sigmoid()
+        self.tanh = nn.Tanh()
+        self.softmax = nn.Softmax(dim=1)
+        self.relu = nn.ReLU()
 
     def forward(self, x):
         features = self.features(x)
@@ -139,16 +139,19 @@ class DenseNet(nn.Module):
         out = self.fc(out)
 
         dist_pred = self.fc_dist(out)
-#         dist_pred = self.sigmoid(dist_pred)
+        # dist_pred = self.sigmoid(dist_pred)
+
         intenstiy_pred = self.fc_intensity(out)
+        # intenstiy_pred = self.relu(intenstiy_pred)
+
         rgb_ratio_pred = self.fc_rgb_ratio(out)
-#         rgb_ratio_pred = self.sigmoid(rgb_ratio_pred)
+        # rgb_ratio_pred = self.sigmoid(rgb_ratio_pred)
+
         ambient_pred = self.fc_ambient(out)
-        depth_pred = self.fc_depth(out)
+        # ambient_pred = self.relu(ambient_pred)
 
         return {'distribution': dist_pred,
                 'intensity': intenstiy_pred,
                 'rgb_ratio': rgb_ratio_pred,
                 'ambient': ambient_pred,
-                'depth': depth_pred
                 }
