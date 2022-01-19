@@ -30,7 +30,7 @@ The pretrained regression model of EMLight (96 anchor points, without depth bran
 ## Training
 
 ### Newest Update (Jan-2022)
-The sigmoid in the output layers in DenseNet.py should be deleted. To avoid complex learning rate scheduling, I fix the learning rate to 0.0001 in the overfitting stage. The model is trained subsets of 100, 1000, 2500, ..., and full set gradually. If you find the prediction get stuck in some points, you can stop it and load the weights of previous subset to retrain it.
+The sigmoid in the output layers in DenseNet.py should be deleted. To avoid complex learning rate scheduling, I fix the learning rate to 0.0001 in the overfitting stage. The model is trained on subsets of 100, 1000, 2500, ... and the full set gradually. If you find the prediction get stuck in some points (may happen occasionally), you should stop it and load the weights trained previous subset to retrain it.
 
 
 Run the command 
