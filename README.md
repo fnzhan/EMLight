@@ -37,6 +37,10 @@ Training tip1: you may overfit the model on a small subset first, then train the
 
 Training tip2: you can try to reduce the number of anchor points (e.g., 96) in the model, which helps to converge during training.
 
+### Update
+The sigmoid in the output layers in DenseNet.py should be deleted. To avoid complex learning rate scheduling, I fix the learning rate to 0.0001 in the overfitting stage. The model is trained subsets of 100, 1000, 2500, ..., and full set gradually. If you find the prediction get stuck in some points, you can stop it and load the weights of previous subset to retrain it.
+
+
 ## Virtual Object Insertion & Rendering
 To evaluate the performance of lighting estimation, we create a Virtual Object Relighting (VOR) dataset to conduct object insertion & rendering in Blender.
 The lighting estimaiton performance is evaluated by using the predicted illumination map as the environment light in Blender.
