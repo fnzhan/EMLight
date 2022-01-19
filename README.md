@@ -28,7 +28,12 @@ python3 distribution_representation.py
 The pretrained regression model of EMLight (96 anchor points, without depth branch) as well as pretrained densenet-121 can be downloaded from [Google Drive](https://drive.google.com/file/d/1ziqu_hgmGzYXTQLQJPsS1AWLcVJWKzTN/view?usp=sharing). Saving the pretrained models in `RegressionNetwork/checkpoints`. The model parameters  should be adjusted accordingly for inference.
 
 ## Training
-Then run the command 
+
+### Newest Update (Jan-2022)
+The sigmoid in the output layers in DenseNet.py should be deleted. To avoid complex learning rate scheduling, I fix the learning rate to 0.0001 in the overfitting stage. The model is trained subsets of 100, 1000, 2500, ..., and full set gradually. If you find the prediction get stuck in some points, you can stop it and load the weights of previous subset to retrain it.
+
+
+Run the command 
 ````bash
 cd RegressionNetwork/
 python3 train.py
@@ -37,8 +42,6 @@ Training tip1: you may overfit the model on a small subset first, then train the
 
 Training tip2: you can try to reduce the number of anchor points (e.g., 96) in the model, which helps to converge during training.
 
-### Update
-The sigmoid in the output layers in DenseNet.py should be deleted. To avoid complex learning rate scheduling, I fix the learning rate to 0.0001 in the overfitting stage. The model is trained subsets of 100, 1000, 2500, ..., and full set gradually. If you find the prediction get stuck in some points, you can stop it and load the weights of previous subset to retrain it.
 
 
 ## Virtual Object Insertion & Rendering
