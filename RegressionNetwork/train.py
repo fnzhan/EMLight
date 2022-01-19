@@ -37,11 +37,11 @@ Model.train()
 
 load_weight = True
 if load_weight:
-    Model.load_state_dict(torch.load("./checkpoints/latest_net.pth"))
+    Model.load_state_dict(torch.load("./checkpoints/490_net_160.pth"))
     print('load trained model')
 util.print_model_parm_nums(Model)
 
-lr_base = 0.0005
+lr_base = 0.0001
 betas = (0.9, 0.999)
 optimizer = torch.optim.Adam(Model.parameters(), lr=lr_base, betas=betas)
 lr_decay_iters = 1000
@@ -59,7 +59,7 @@ coord = coord.repeat(batch_size, 1, 1).to(device).float()
 
 
 
-for epoch in range(0, 10000):
+for epoch in range(0, 500):
 
     print('{} optim: {}'.format(epoch, optimizer.param_groups[0]['lr']))
 
