@@ -24,6 +24,9 @@ pix2 = np.linspace(0, 2, w) * np.pi
 X, Y = np.meshgrid(pix2, pix1)
 X, Y = X.reshape(-1), Y.flatten().reshape(-1)
 
+# _, _, SN_Matrix = SNvertex(theta=Y, phi=X, jmax=jmax)
+# np.save('SN_Matrix3.npy', SN_Matrix)
+
 SN_Matrix = np.load('SN_Matrix3.npy')  # 128*256, 31
 print (SN_Matrix.shape) # 1, 12, 48, 192 = 253, 768 = 256
 
