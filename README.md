@@ -3,7 +3,7 @@
 
 ## Update
 - *12/2021*: We release our [Virtual Object Relighting (VOR) Dataset](https://drive.google.com/drive/folders/1mI3ufHgZOmHeShoezk77Gr_GhdqCPGif?usp=sharing) for lighting estimation evaluation. Please refer to Virtual Object Insertion & Rendering section.
-- *07/2021*: Our new work [Sparse Needlets for Lighting Estimation with Spherical Transport Loss](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhan_Sparse_Needlets_for_Lighting_Estimation_With_Spherical_Transport_Loss_ICCV_2021_paper.pdf) is accepted to ICCV 2021. This work introduces a new Needlets basis for lighting representation which allows to represent illumination in both spatial and frequency domains. The implementation code is available in `Needlets/` of this repository.
+- *07/2021*: We include a new Needlets basis for lighting representation which allows to represent illumination in both spatial and frequency domains. The implementation code is available in `Needlets/` of this repository.
 
 ![Teaser](teaser2.png)
 
@@ -66,10 +66,13 @@ If you use this code for your research, please cite our papers.
 ```
 
 ```
-@inproceedings{zhan2021emlight,
-  title={Sparse Needlets for Lighting Estimation with Spherical Transport Loss},
-  author={Zhan, Fangneng and Zhang, Changgong and Hu, Wenbo and Lu, Shijian and Ma, Feiying and Xie, Xuansong and Shao, Ling},
-  booktitle={Proceedings of the IEEE International Conference on Computer Vision},
-  year={2021}
+@article{zhan2022gmlight,
+  title={Gmlight: Lighting estimation via geometric distribution approximation},
+  author={Zhan, Fangneng and Yu, Yingchen and Zhang, Changgong and Wu, Rongliang and Hu, Wenbo and Lu, Shijian and Ma, Feiying and Xie, Xuansong and Shao, Ling},
+  journal={IEEE Transactions on Image Processing},
+  volume={31},
+  pages={2268--2278},
+  year={2022},
+  publisher={IEEE}
 }
 ```
