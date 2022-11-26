@@ -12,7 +12,10 @@ from PIL import Image
 import util
 import DenseNet
 from geomloss import SamplesLoss
+<<<<<<< HEAD
 # from sliced_wasserstein import sliced_wasserstein_distance
+=======
+>>>>>>> 2e87aa6 (update)
 
 import imageio
 imageio.plugins.freeimage.download()
@@ -22,7 +25,11 @@ h = PanoramaHandler()
 batch_size = 16
 
 save_dir = "./checkpoints"
+<<<<<<< HEAD
 train_dir = '/opt/tiger/fnzhan/datasets/LavalIndoor/'
+=======
+train_dir = '/Datasets/Laval-Indoor/'
+>>>>>>> 2e87aa6 (update)
 # train_dir = '/home/fangneng.zfn/projects/Alibaba/MeshLight/dataset/'
 hdr_train_dataset = data.ParameterDataset(train_dir)
 dataloader = DataLoader(hdr_train_dataset, batch_size=batch_size, shuffle=True, drop_last=True)
@@ -37,7 +44,11 @@ Model.train()
 
 load_weight = True
 if load_weight:
+<<<<<<< HEAD
     Model.load_state_dict(torch.load("./checkpoints/490_net_160.pth"))
+=======
+    Model.load_state_dict(torch.load("./checkpoints/70_net.pth"))
+>>>>>>> 2e87aa6 (update)
     print('load trained model')
 util.print_model_parm_nums(Model)
 

@@ -2,10 +2,17 @@ import torch
 import numpy as np
 import OpenEXR
 import Imath
+<<<<<<< HEAD
 import cv2
 from scipy import interpolate
 import vtk
 from vtk.util import numpy_support
+=======
+import os
+os.environ["OPENCV_IO_ENABLE_OPENEXR"]="1"
+import cv2
+from scipy import interpolate
+>>>>>>> 2e87aa6 (update)
 import imageio
 imageio.plugins.freeimage.download()
 
@@ -238,6 +245,7 @@ def convert_to_panorama(dirs, sizes, colors):
     return lights
 
 
+<<<<<<< HEAD
 def normalize_2_unit_sphere(pts):
     num_pts = pts.GetNumberOfPoints()
     # print("we have #{} pts".format(num_pts))
@@ -273,6 +281,8 @@ def polyhedron(subdivide=1):
     # print (as_numpy.shape)
     return pts_arr
 
+=======
+>>>>>>> 2e87aa6 (update)
 def sphere_points(n=128):
     golden_angle = np.pi * (3 - np.sqrt(5))
     theta = golden_angle * np.arange(n)
