@@ -23,7 +23,7 @@ python3 distribution_representation.py
 
 
 ## Pretrained Models
-The pretrained regression model of EMLight (96 anchor points, without depth branch) as well as pretrained densenet-121 can be downloaded from [Google Drive](https://drive.google.com/file/d/1ziqu_hgmGzYXTQLQJPsS1AWLcVJWKzTN/view?usp=sharing). Saving the pretrained models in `RegressionNetwork/checkpoints`. The model parameters  should be adjusted accordingly for inference.
+The pretrained regression model of EMLight as well as pretrained densenet-121 can be downloaded from [Google Drive](https://drive.google.com/file/d/1qUWWGxlXtWovY5ef7X_W3b2TokW_z1tq/view?usp=sharing). Saving the pretrained models in `RegressionNetwork/checkpoints`.
 
 ## Training
 
@@ -36,9 +36,9 @@ Run the command
 cd RegressionNetwork/
 python3 train.py
 ````
-Training tip1: you may overfit the model on a small subset first, then train the model on the full set, to avoid divergence during training. 
+Training tip1: you may overfit the model on a small subset first, then train the model on the full set if there is divergence during training. 
 
-Training tip2: you can try to reduce the number of anchor points (e.g., 96) in the model, which helps to converge during training.
+Training tip2: you can try to reduce the number of anchor points (e.g., 96) in the model, which helps to converge.
 
 
 
