@@ -13,9 +13,9 @@
 
 ## Dataset Preparation
 [Laval Indoor HDR Dataset](http://indoor.hdrdb.com/#intro) <br>
-Thanks to the intellectual property of Laval Indoor dataset, the original datasets and processed training data can not be released from me. Please get access to the dataset by contacting the dataset creator jflalonde@gel.ulaval.ca.
+Thanks to the intellectual property of Laval Indoor dataset, the original datasets and processed training data can not be released from me. Please get access to the dataset by contacting the dataset creator jflalonde@gel.ulaval.ca. Note, I request the processed version directly, with cropped HDR as input image, while the original dataset is panorama without local cropping.
 
-After getting the dataset, the raw illumination map can be processed to generate the training data of the regression network as below:
+After getting the dataset, the panoramic illumination map can be processed to generate the training data of the regression network as below:
 ````bash
 cd RegressionNetwork/representation/
 python3 distribution_representation.py
